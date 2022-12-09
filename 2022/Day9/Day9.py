@@ -73,5 +73,3 @@ if __name__ == '__main__':
     for inp in directions:
         new_rope.move(inp[0], int(inp[1]))
     new_rope.unique_positions()
-    #print(new_rope.head_list)
-    #print(new_rope.tail_list)
