@@ -1,10 +1,12 @@
 import json
+import numpy as np
 
 class Monkey:
 
     def __init__(self, id):
         self.id = id
         self.item_list = []
+        self.eval_string = ""
         self.operation_int = 0
         self.true_monkey = 0
         self.false_monkey = 0
@@ -17,6 +19,8 @@ class Monkey:
 
     def get_item_list(self):
         return self.item_list
+    def set_eval_string(self, str):
+        self.eval_string = str
 
     def set_true_monkey(self, id):
         self.true_monkey = id
@@ -25,7 +29,7 @@ class Monkey:
         self.false_monkey = id
 
     def item_operation(self, item):
-        return floor(item*self.operation_int/3)
+        return np.floor(item*self.operation_int/3)
 
     def test_operation(self, item):
         if item == 0:
