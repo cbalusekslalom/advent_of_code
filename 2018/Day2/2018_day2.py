@@ -54,13 +54,22 @@ def checksum(inline):
 
 def main(in_file):
     # two_count, thr_count = 0, 0
+    bin_dict = {}
     count2, count3 = 0, 0
     with open(in_file) as f:
-
-
         c2, c3 = checksum(in_file)
         count2 += c2
         count3 += c3
+        for line in f.readlines():
+            bin_dict[line] = []
+    for key1 in bin_dict.keys():
+        for key2 in bin_dict.keys():
+            if key1 == key2:
+                continue
+            char_diff_total, same_letters = str_diff(key1, key2)
+            if char_diff_total == 1:
+                print(same_letters)
+                return same_letters
     print(checksum)
 
 

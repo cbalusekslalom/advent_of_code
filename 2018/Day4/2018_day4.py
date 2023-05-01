@@ -16,10 +16,16 @@ class Guard():
 
 
 def read_input(in_file):
+    time_dict = {}
     with open(in_file, 'r') as f:
-        time_list = [line.rstrip() for line in f.readlines()]
-    time_list.sort()
-    return time_list
+        for line in f.readlines():
+            key_val = line[6:11]
+            ts = line[15:17]
+            action = line[19:]
+            if key_val not in time_dict:
+                time_dict[key_val] = {}
+            time_dict[key_val][ts] = action
+    return time_dict
 
 in_file = '2018_day4_input.txt'
 
