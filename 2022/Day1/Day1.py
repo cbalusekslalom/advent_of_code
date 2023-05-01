@@ -12,12 +12,13 @@ Get first 3 elements of Sorted dictionary and SUM.
 
 """
 import collections
+import os
 
 
 def create_elf_gl(InputFile: str) -> dict:
     counter = 0
     out_dict = {counter: 0}
-    with open(InputFile) as f:
+    with open(InputFile, 'r') as f:
         for line in f.readlines():
             if line.strip() == '':
                 counter += 1
@@ -26,11 +27,13 @@ def create_elf_gl(InputFile: str) -> dict:
                 out_dict[counter] += int(line.strip())
     return out_dict
 
+print('the path of the file is ' + os.path.realpath(__file__))
+
 elf_dict = create_elf_gl('input.txt')
 
 ### PART1: Reverse Sort dictionary
 
-print(dict(sorted(elf_dict.items(), key=lambda item: item[1], reverse=True)))
+# print(dict(sorted(elf_dict.items(), key=lambda item: item[1], reverse=True)))
 
 ### PART2: Get TOP 3 elves.
 
