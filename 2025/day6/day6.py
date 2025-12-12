@@ -12,6 +12,7 @@ class Homework:
         self.input_file = os.path.join(os.getcwd(), '2025/inputs/'+inTxt)
         self.operations = []
         self.line_dict = {}
+        self.line_dict_ii = {}
         self.read_file
         self.total_sum = 0
     @property
