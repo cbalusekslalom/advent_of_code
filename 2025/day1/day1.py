@@ -22,10 +22,10 @@ class Safe():
         elif inp[0] == 'L':
             temp = self.location-int(inp[1:])
         print(f"The input is {inp}, this will move from {self.location} to {temp}")
-        if self.location + temp > 100:
-            self.pass_zero += 1 + int(abs((self.location+temp)/100)-1)
-        if self.location + temp < 0:
-            self.pass_zero += 1 + int(abs((self.location+temp)/100)) 
+        if temp >= 100:
+            self.pass_zero += 1 + int(abs((temp)/100)-1)
+        if temp < 0:
+            self.pass_zero += 1 + int(abs((temp)/100)-1) 
         self.location = np.mod(temp, 100)
         if not self.location:
             print(f"the dial will rotate: {temp}, on {inp}; this will count for 1")

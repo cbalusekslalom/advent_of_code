@@ -61,16 +61,19 @@ class Indicator():
         self.push_counter = 1
         self.out_state = [1 if i == '#' else 0 for i in self.on_state]
         self.outcome_list = [self.button_addition(self.out_state, v) for v in self.button_map.values()]
-        while self.zero_state not in outcome_list:
+        while self.zero_state not in self.outcome_list:
             self.push_counter += 1
             self.temp_list = [self.button_addition(tl, v) 
                                  for tl in self.outcome_list 
                                  for v in self.button_map.values() 
                                  if self.button_addition(tl, v) not in self.outcome_list]
-            self.outcome_list.extend(temp_list)
-            print(len(self.outcome_list))
+            self.outcome_list.extend(self.temp_list)
             if self.push_counter %100 == 0:
-                print(f"High push count, {len(outcome_list)}")
+                print(f"High push count, {len(self.outcome_list)}")
+    @property
+    def get_pushes(self):
+        if not self.push_counter:
+            return 0
         return self.push_counter
 
 

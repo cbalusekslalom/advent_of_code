@@ -6,7 +6,7 @@ from functools import reduce
 
 def read_file(inTxt):
     file_name = os.path.join(os.getcwd(), '2025/inputs/'+inTxt)
-    three_dim_dict.keys = {}
+    three_dim_dict = {}
     counter = 0
     with open(file_name, 'r') as f:
         for line in f.readlines():
@@ -67,9 +67,8 @@ def build_circuit(input_dict):
 
 def main(inTxt, iter):
     dim_dict = read_file(inTxt)
-    tuple_list = [(i,j) for i,j in zip(dim_dict.keys(), dim_dict.keys()) if i != j]
-    for i_key in dim_dict.keys():
-        closest_neighbor_dict[i_key] = {calc_distance(dim_dict[i_key], dim_dict[j_key]):(i_key, j_key) for j_key in dim_dict.keys() if j_key != i_key}
+    tuple_list = [[i,j] for i in dim_dict.keys() for j in dim_dict.keys() if i != j and i < j]
+    closest_neighbor_dict = {calc_distance(dim_dict[tpl[0]], dim_dict[tpl[1]]):(tpl[0], tpl[1]) for tpl in tuple_list}
     neighbor = nearest_neighbor(closest_neighbor_dict)
     step = 0
     list_of_connections = []
